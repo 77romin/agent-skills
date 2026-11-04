@@ -6,6 +6,8 @@ You are implementing a web application under a strict deadline based on the proj
 - The main Codex instance is the **orchestrator**. Use `planner`, `generator`, `reviewer` and `qa` subagents selectively when supported. Do not launch all four solely because they exist.
 - The independent QA agent should read the raw README before seeing Generator's implementation.
 - Reconcile requirements into a traceability matrix: requirement ID, priority, acceptance criterion, code status and verified test status.
+- **Human-in-the-loop gate:** after initial README/QA analysis, present priorities, proposed stack/architecture and alternatives, API/data contracts, edge cases and implementation order to the user (Tech Lead); **wait for user approval before changing application code or installing dependencies**.
+- Once approved, implement and fix routine errors autonomously. Seek a new Tech Lead decision for major stack/architecture changes, a fundamental data model redesign, or dropping a P0 requirement.
 - Prefer an early runnable MVP and fully completed P0 vertical slices over partially implemented features.
 - Preserve existing stack, project code, environment constraints and contracts.
 - Assign exclusive file ownership for writes; Planner and Reviewer are read-only, QA may write only dedicated test files if assigned.
