@@ -17,10 +17,12 @@ Use this skill when building a web application from a supplied README under time
 - Main Codex is the orchestrator.
 - Parallelize **Planner** and **QA** to independently analyze README; QA drafts acceptance tests, Planner drafts implementation plan.
 - Reconcile both outputs into a Requirements Matrix: ID, README evidence, priority P0/P1/P2, acceptance criterion, implementation status, test status.
-- Assign **Generator** application code ownership. Start a minimal running app quickly and implement vertical feature slices.
+- **Human approval gate:** report the requirements, recommended architecture/data contract, major trade-offs, critical test scenarios, and proposed P0-first implementation order to the user (Tech Lead). **Stop and wait for explicit approval or revisions before changing application code or installing project dependencies.**
+- **Only after approval**, assign **Generator** application code ownership. Start a minimal running app quickly and implement vertical feature slices.
 - Delegate **Reviewer** and **QA** after relevant code exists. Both may inspect in parallel, but neither should edit application files.
 - Route actionable failures to Generator; rerun relevant tests and finally P0 regression checks.
 - Delegate additional write-capable agents ONLY when file ownership is disjoint and integration costs are understood.
+- Once the initial plan is approved, ordinary implementation, test execution, and routine bug fixes are autonomous. Obtain a new Tech Lead decision only for major architecture or stack changes, core data-model redesign, or removal of a P0 feature.
 
 ## 2. Prioritize for scoring
 - P0: hard requirements, app starts successfully, core user journeys, explicit grading rules.
@@ -36,7 +38,8 @@ Use this skill when building a web application from a supplied README under time
 - A remaining risk is explicit: PASS (executed and verified), FAIL (executed and failed), BLOCKED (unable to execute).
 
 ## 4. Execution checkpoints
-- Initial: exact build/start/test commands known; earliest runnable app launched if feasible.
+- Initial (before approval): read-only environment and README inspection, requirements/test plan, and Tech Lead decision. Do not start feature coding.
+- After approval: run the app as early as feasible and confirm actual build/start/test commands.
 - After each vertical slice: run narrow smoke tests; preserve evidence (command and result).
 - After integrations: run all P0 tests; check app startup, state integrity and critical UI flows.
 - Final deadline window: freeze optional work, check README submission constraints, verify no secrets, ensure reproducible startup and document unsupported tests.
