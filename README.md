@@ -4,7 +4,17 @@
 
 > Orchestrator는 메인 Codex가 담당하며, **Planner / Generator / Reviewer / QA** 네 역할을 서브에이전트로 분리합니다. 네 역할을 무조건 동시에 돌리지 않고, 작업 의존성에 따라 선택적으로 병렬화합니다.
 
-## 1. 빠른 설치 (macOS / Linux)
+## 가장 간단한 사용법: 프롬프트만 복사 (추천)
+
+**대회 플랫폼 안에서 바로 개발할 때는 설치가 필요하지 않습니다.**
+
+1. [START_CONTEST.md](prompts/START_CONTEST.md)를 엽니다.
+2. 대회 프로젝트의 README가 열려 있는 AI 코딩 플랫폼에 **프롬프트 본문만** 복사해 붙여넣습니다.
+3. 플랫폼이 멀티 에이전트를 지원하면 Planner / Generator / Reviewer / QA를 실제로 활용하고, 지원하지 않으면 역할별 절차를 단일 에이전트가 수행합니다.
+
+이 방식은 `$contest-webapp` Skill이나 별도의 TOML 설정 설치를 요구하지 않습니다. **아래 설치 절차는 Codex 에이전트를 반복 사용하고 싶을 때만 선택적으로 활용하세요.**
+
+## 1. 선택 사항: Codex 에이전트·Skill 설치 (macOS / Linux)
 
 ```bash
 git clone https://github.com/77romin/agent-skills.git
