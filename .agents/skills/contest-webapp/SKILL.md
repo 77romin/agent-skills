@@ -9,15 +9,18 @@ Use this skill when building a web application from a supplied README under time
 
 ## 0. Establish reality before planning
 - Locate and read the actual README, test scripts, entry points, dependency manifests, current code and submission instructions.
-- Ask for a missing deadline only when necessary; otherwise proceed and protect a final verification window.
+- If the hard deadline is not stated, ask for it once as a clock time; then protect a final verification window. Never guess the time remaining.
+- When the task supplies input data (documents, datasets, logs, fixtures), audit it before designing: files by type, whether each is actually readable by the intended pipeline, and what is unread, empty or lossy. Report coverage as `read / total`.
 - Don't assume a database, web framework, UI design, external network, or browser automation is available.
 - Only use tools already available in the environment; do not fabricate tool runs.
 
 ## 1. Delegate by phase, not by headcount
 - Main Codex is the orchestrator.
 - Parallelize **Planner** and **QA** to independently analyze README; QA drafts acceptance tests, Planner drafts implementation plan.
+- Planner starts with a **problem frame**: user, the job they are trying to get done, the observable success criterion, and non-goals — each marked as README evidence or assumption.
+- **Grill before the gate:** batch the open questions that would change priorities (at most five, highest impact first) and ask the Tech Lead. Do not ask what the README already answers.
 - Reconcile both outputs into a Requirements Matrix: ID, README evidence, priority P0/P1/P2, acceptance criterion, implementation status, test status.
-- **Human approval gate:** report the requirements, recommended architecture/data contract, major trade-offs, critical test scenarios, and proposed P0-first implementation order to the user (Tech Lead). **Stop and wait for explicit approval or revisions before changing application code or installing project dependencies.**
+- **Human approval gate:** report the problem frame (goal in one sentence, user, success criterion, non-goals), the requirements, recommended architecture/data contract, major trade-offs, critical test scenarios, input-audit coverage when data is supplied, and the proposed P0-first implementation order with **milestones and a feature-freeze time** to the user (Tech Lead). **Stop and wait for explicit approval or revisions before changing application code or installing project dependencies.**
 - **Only after approval**, assign **Generator** application code ownership. Start a minimal running app quickly and implement vertical feature slices.
 - Delegate **Reviewer** and **QA** after relevant code exists. Both may inspect in parallel, but neither should edit application files.
 - Route actionable failures to Generator; rerun relevant tests and finally P0 regression checks.
@@ -30,6 +33,8 @@ Use this skill when building a web application from a supplied README under time
 - P2: polish, nice-to-haves, unnecessary infrastructure. Defer when time is short.
 - Preserve the supplied stack and contract unless the README requires a change.
 - Prefer completing an end-to-end P0 journey over producing scaffolding for many half-finished features.
+- **Scope gate:** work outside the approved matrix (new feature, visible gap or placeholder, an agent's suggestion) is logged with its linked requirement, priority and estimated cost before anyone starts it. P0-linked items proceed; P1 waits until every P0 is PASS; P2 or unlinked items go to a backlog until the Tech Lead decides. Visibility of a gap is not its priority.
+- While any P0 is not PASS, Medium/Low findings are recorded, not fixed.
 
 ## 3. Acceptance tests are independent
 - QA should derive tests from README, not only the Generator's design.
@@ -42,7 +47,9 @@ Use this skill when building a web application from a supplied README under time
 - After approval: run the app as early as feasible and confirm actual build/start/test commands.
 - After each vertical slice: run narrow smoke tests; preserve evidence (command and result).
 - After integrations: run all P0 tests; check app startup, state integrity and critical UI flows.
-- Final deadline window: freeze optional work, check README submission constraints, verify no secrets, ensure reproducible startup and document unsupported tests.
+- At each milestone: report `time left | P0 PASS count | items at risk`; if a milestone is missed, cut scope (P2, then P1) instead of extending.
+- If the user runs extra agent sessions, the orchestrator stays the single owner of scope and priority; other sessions are read-only or own disjoint files.
+- Final deadline window: at the agreed freeze time stop feature work even if items remain, freeze optional work, check README submission constraints, verify no secrets, ensure reproducible startup and document unsupported tests.
 
 ## 5. Output format for orchestrator
 Report compactly:

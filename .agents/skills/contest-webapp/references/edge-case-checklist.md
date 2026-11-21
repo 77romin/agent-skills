@@ -8,6 +8,14 @@ Read the contest README first. Every test case must map to a real requirement ID
 - Missing resources, invalid identifiers, invalid query parameters, correct HTTP status
 - Pagination zero/large page, sorting/filtering stability, no results
 
+## Input data and ingestion (when the task supplies data)
+- Every supplied file is accounted for: count by type, and `read / total` coverage is reported
+- Files that open but yield little or no content (scanned images, image-only tables, wrong encoding)
+- Structure survives extraction: table rows/columns, headings, nested markup, units and dates
+- The same entity written in different ways is recognised as one
+- A sample of extracted or indexed content matches the source when compared by hand
+- A question whose answer is not in the data returns "not found", not an invented answer
+
 ## Persistence and state
 - Refresh/restart still shows previously saved state if persistence is required
 - Creation/update/delete follows the specified state transition rules
