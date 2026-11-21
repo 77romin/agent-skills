@@ -4,6 +4,22 @@
 
 > Orchestrator는 메인 Codex가 담당하며, **Planner / Generator / Reviewer / QA** 네 역할을 서브에이전트로 분리합니다. 네 역할을 무조건 동시에 돌리지 않고, 작업 의존성에 따라 선택적으로 병렬화합니다.
 
+## 한눈에 보기
+
+### 구조: 누가 무엇을 맡는가
+
+<img src="docs/architecture.png" width="720" alt="Tech Lead(사용자)가 승인과 판단을 내리고, Orchestrator(메인 Codex)가 보고와 질문을 올리며 Planner, Generator, Reviewer, QA 서브에이전트에게 작업을 위임하고 결과를 통합하는 구조">
+
+- **Tech Lead(사용자)**: 문제 정의와 우선순위를 승인하고, 모호한 조건을 판단합니다.
+- **Orchestrator(메인 Codex)**: 범위와 우선순위를 관리하고, 서브에이전트에 위임한 결과를 통합합니다.
+- **서브에이전트**: 앱 코드를 고치는 것은 Generator뿐입니다. Planner와 Reviewer는 읽기 전용이고, QA는 지정된 테스트 파일만 작성합니다.
+
+### 워크플로우: 어떤 순서로 진행되는가
+
+<img src="docs/workflow.png" width="720" alt="환경 확인, 문제 정의와 요구사항 분석, Tech Lead 승인 관문, P0부터 구현, 리뷰와 테스트, 기능 동결과 최종 검증, 사용자가 직접 제출로 이어지는 흐름. 리뷰와 테스트에서 결함이 나오면 구현 단계로 돌아가 수정한다">
+
+승인 관문 전에는 코드를 수정하지 않습니다. 구현과 검증은 결함이 나오면 되돌아가는 루프이고, 기능 동결 시각이 되면 새 작업을 멈춥니다. 최종 제출은 항상 사용자가 직접 합니다.
+
 ## 가장 간단한 사용법: 프롬프트만 복사 (추천)
 
 **대회 플랫폼 안에서 바로 개발할 때는 설치가 필요하지 않습니다.**
@@ -80,6 +96,9 @@ bash /path/to/agent-skills/scripts/tmux-contest.sh /path/to/contest-project
 ```text
 agent-skills/
 ├── README.md
+├── docs/                      # README 그림
+│   ├── architecture.png
+│   └── workflow.png
 ├── agents/
 │   ├── planner.toml
 │   ├── generator.toml
