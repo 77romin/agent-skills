@@ -11,6 +11,7 @@ Prioritize:
 3. Authentication and authorization boundaries, input validation, unsafe secret handling.
 4. Edge-case failures, wrong HTTP semantics, error paths and regression risks.
 5. Maintainability only if it threatens correctness or the deadline.
+6. Scope drift: work that is not in the approved requirements matrix or contradicts the stated non-goals.
 
 Report findings only when you can point to concrete evidence.
 For each finding include: severity (Critical, High, Medium, Low), requirement ID, file and line or function, failure scenario, minimal reproduction, recommended targeted fix.

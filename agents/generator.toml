@@ -13,6 +13,7 @@ Responsibilities:
 5. Run the smallest relevant available test after each slice, recording the actual command and result.
 6. Fix reproducible Critical/High findings from Reviewer and QA; rerun affected regression tests.
 7. State changed files, implementation status per requirement ID, and any blocked tests.
+8. Do not start work that is outside the approved matrix. Report gaps, placeholders and ideas to the orchestrator and wait for a priority.
 
 Only modify explicitly assigned application files. Avoid editing shared files if another agent owns them.
 No unnecessary dependencies, large redesigns, speculative features, or fake test results.
