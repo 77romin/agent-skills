@@ -131,5 +131,6 @@ agent-skills/
 - [Codex 개발 문서](https://developers.openai.com/codex/)
 - [Agent Skills 가이드](https://developers.openai.com/api/docs/guides/tools-skills)
 - [Git worktree 문서](https://git-scm.com/docs/git-worktree)
+- [SK하이닉스 AI 해커톤 본선 후기](https://letsgomin.com/2966/) — 이 키트를 실제 본선에서 사용한 기록
 
 이 저장소는 검증 절차와 설정 파일을 제공하는 **템플릿**입니다. 실제 대회 문제의 실행 명령·테스트·채점 기준은 README와 현장 환경에 맞춰 조정해야 합니다.
